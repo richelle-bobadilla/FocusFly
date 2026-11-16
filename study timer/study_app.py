@@ -1,8 +1,6 @@
 from cProfile import label
 import tkinter as tk
-from tkinter import messagebox
 import customtkinter as ctk
-import pygame
 
 
 class StudyApp:
