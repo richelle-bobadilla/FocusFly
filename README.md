@@ -1,5 +1,5 @@
-# Productivity-Buddy-
-An all-in-one system amde for me to be more productive and stay on task!
+# FocusFly
+An all-in-one system made for me to be more productive and stay on task!
 
 This system features diffrent productivity tools such as the pomdoro timer, website blocker, flashcards, etc.
 
