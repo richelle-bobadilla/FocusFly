@@ -13,6 +13,7 @@ class StudyTimer(StudyApp):
         super().__init__(root)
         self.time_left = 0
         self.root.title("Study Timer")
+        self.is_on_break = False
 
         #widgets
         # instructions
@@ -70,6 +71,7 @@ class StudyTimer(StudyApp):
 
 
     def reset_timer(self):
+        self.is_on_break = False
         self.is_timer_running = False
         self.countdown_text.config(text = "25:00")
 
@@ -80,22 +82,25 @@ class StudyTimer(StudyApp):
         self.slider.set(25)
 
 
-    def update_timer(self):
-        # update the countdown text
-        super().update_timer()
+    def timer_finished(self):
 
-        if self.countdown_text.cget("text") == "00:00" and self.is_timer_running:
-            messagebox.showinfo("Time's up! Break time :D")
-            pygame.mixer.init()
-            pygame.mixer.music.load("bell.mp3")
-            
-            pygame.mixer.music.set_volume(0.6)
-            pygame.mixer.music.play()
-            self.is_timer_running = False
+        if not self.is_on_break: 
+
+            self.instructions.config(text="Break time!")
+            self.slider.set(10)
+            self.countdown_text.config(text="10:00")
+            messagebox.showinfo("Study Timer", "Time's up! Break time :D")
+            self.is_on_break = True
             pygame.mixer.music.stop()
-            
+
+        else:
+            self.is_on_break = False
+
+            messagebox.showinfo("Study Timer", "Time's up! Back to studying :D")
+            self.instructions.config(text="Ready to focus?")
+            self.countdown_text.config(root, text = "25:00", font =("Courier Prime 16", 50), fg = "#4a7eff", bg = "#1f1f1f")
             self.slider.set(25)
-            self.slider.configure(state = "normal")
+
 
 
 

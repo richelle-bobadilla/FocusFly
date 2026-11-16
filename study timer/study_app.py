@@ -52,3 +52,8 @@ class StudyApp:
             self.countdown_text.config(text="00:00")
             self.is_timer_running = False
             self.slider.configure(state="normal")
+            self.timer_finished()
+
+
+    def timer_finished(self):
+        return NotImplementedError()
